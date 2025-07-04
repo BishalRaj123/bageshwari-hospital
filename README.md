@@ -1,73 +1,55 @@
-# Welcome to your Lovable project
+# 🏥 Bageshwari Hospital Pvt. Ltd. – Website
 
-## Project info
+A modern, responsive, and user-friendly hospital website for **Bageshwari Hospital Pvt. Ltd.**, built using React, Vite, TypeScript, Tailwind CSS, and shadcn/ui components.
 
-**URL**: https://lovable.dev/projects/76c2873a-f610-44e9-bbcf-409fc0e788d2
+---
 
-## How can I edit this code?
+## 📌 Project Overview
 
-There are several ways of editing your application.
+This project includes the following pages:
 
-**Use Lovable**
+- 🏠 Home Page
+- 👨‍⚕️ About Us
+- 💼 Services Offered
+- 👨‍⚕️ Doctors List
+- 📅 Appointment Booking
+- 📞 Contact Information
+- ⭐ Patient Testimonials
+- ❌ 404 Not Found Page
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/76c2873a-f610-44e9-bbcf-409fc0e788d2) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Live Website
 
-**Use your preferred IDE**
+👉 [Visit the Website](https://www.baseshwarihospital.com.np/)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🛠 Tech Stack
 
-Follow these steps:
+- **React** – Frontend framework
+- **Vite** – Build tool for fast development
+- **TypeScript** – Strongly typed JavaScript
+- **Tailwind CSS** – Utility-first CSS framework
+- **shadcn/ui** – Modern and accessible UI components
+- **React Router (HashRouter)** – Client-side routing with GitHub Pages support
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+## 📁 Project Structure
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/76c2873a-f610-44e9-bbcf-409fc0e788d2) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+```bash
+src/
+├── components/         # Reusable UI components
+├── pages/              # Route-based page components
+│   ├── Index.tsx
+│   ├── About.tsx
+│   ├── Services.tsx
+│   ├── Doctors.tsx
+│   ├── Appointment.tsx
+│   ├── Contact.tsx
+│   ├── Testimonials.tsx
+│   └── NotFound.tsx
+├── App.tsx             # Main app file with all routes
+├── main.tsx            # Entry point
+└── index.css           # Global styles with Tailwind
