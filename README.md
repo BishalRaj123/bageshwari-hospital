@@ -21,7 +21,7 @@ This project includes the following pages:
 
 ## 🚀 Live Website
 
-👉 [Visit the Website](https://www.baseshwarihospital.com.np/)
+👉 [Visit the Website](https://bishalraj123.github.io/bageshwari-hospital/)
 
 ---
 
