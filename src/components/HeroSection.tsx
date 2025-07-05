@@ -1,8 +1,11 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowDown } from "lucide-react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const HeroSection = () => {
+  const navigate = useNavigate(); // Initialize navigate hook
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -36,14 +39,15 @@ const HeroSection = () => {
               patient.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              
               <Button
-                onClick={() => scrollToSection("appointment")}
+                onClick={() => navigate("/appointment")}
                 className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-4 rounded-full text-lg font-medium transition-all duration-200 transform hover:scale-105 hover:shadow-lg"
               >
                 Make an Appointment
               </Button>
               <Button
-                onClick={() => scrollToSection("services")}
+                onClick={() => navigate("/services")} // Navigate to Services page
                 variant="outline"
                 className="border-emerald-600 text-emerald-600 hover:bg-emerald-50 px-8 py-4 rounded-full text-lg font-medium transition-all duration-200"
               >
@@ -72,18 +76,18 @@ const HeroSection = () => {
               <div className="w-full max-w-lg mx-auto">
                 <div className="grid grid-cols-2 gap-4 mb-4">
                   <img
-                    src="/hero/hero2.jpg"
+                    src="/bageshwari-hospital/hero/hero2.jpg"
                     alt="Modern Hospital Building"
                     className="w-full h-32 rounded-2xl shadow-xl object-cover"
                   />
                   <img
-                    src="/hero/hero1.jpg"
+                    src="/bageshwari-hospital/hero/hero1.jpg"
                     alt="Hospital Interior"
                     className="w-full h-32 rounded-2xl shadow-xl object-cover"
                   />
                 </div>
                 <img
-                  src="/hero/hero3.jpg"
+                  src="/bageshwari-hospital/hero/hero3.jpg"
                   alt="Medical Equipment"
                   className="w-full h-48 rounded-2xl shadow-2xl object-cover"
                 />
@@ -111,25 +115,27 @@ const HeroSection = () => {
 
         {/* Hospital Gallery Preview */}
         <div className="mt-20 animate-on-scroll">
-          <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">Our Modern Healthcare Facility</h3>
+          <h3 className="text-2xl font-bold text-center text-gray-900 mb-8">
+            Our Modern Healthcare Facility
+          </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <img
-              src="/facility/facility1.jpg"
+              src="/bageshwari-hospital/facility/facility1.jpg"
               alt="Surgery Suite"
               className="w-full h-full rounded-xl object-cover hover:scale-105 transition-transform duration-200"
             />
             <img
-              src="/facility/facility2.jpg"
+              src="/bageshwari-hospital/facility/facility2.jpg"
               alt="Reception Area"
               className="w-full h-full rounded-xl object-cover hover:scale-105 transition-transform duration-200"
             />
             <img
-              src="/facility/facility3.jpg"
+              src="/bageshwari-hospital/facility/facility3.jpg"
               alt="Emergency Department"
               className="w-full h-full rounded-xl object-cover hover:scale-105 transition-transform duration-200"
             />
             <img
-              src="/facility/facility4.jpg"
+              src="/bageshwari-hospital/facility/facility4.jpg"
               alt="Medical Team"
               className="w-full h-full rounded-xl object-cover hover:scale-105 transition-transform duration-200"
             />

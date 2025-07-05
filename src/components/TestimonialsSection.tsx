@@ -11,7 +11,7 @@ const TestimonialsSection = () => {
       id: 1,
       name: "Anita Sharma",
       image:
-        "/testimony/testimony1.jpg",
+        "/bageshwari-hospital/testimony/testimony1.jpg",
       rating: 5,
       review:
         "Exceptional care and treatment at Bageshwari Hospital. Dr. Rajesh Kumar provided excellent consultation and the staff was very supportive throughout my treatment. Highly recommend this hospital for quality healthcare.",

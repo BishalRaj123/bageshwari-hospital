@@ -42,6 +42,7 @@ const ContactSection = () => {
         title: "Message Sent Successfully!",
         description:
           "Thank you for contacting us. We'll get back to you within 24 hours.",
+          className: "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4",
       });
 
       // Reset form
@@ -308,9 +309,12 @@ const ContactSection = () => {
                 We're available 24/7 to help you.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold">
-                  Call Emergency: +91 98765 43210
-                </Button>
+              <Button
+  onClick={() => window.location.href = 'tel:+919876543210'}
+  className="bg-red-600 hover:bg-red-700 text-white px-8 py-3 rounded-full font-semibold"
+>
+  Call Emergency: +91 98765 43210
+</Button>
                 <Button
                   variant="outline"
                   className="border-red-600 text-red-600 hover:bg-red-50 px-8 py-3 rounded-full font-semibold"

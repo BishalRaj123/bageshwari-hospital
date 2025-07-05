@@ -108,7 +108,7 @@ const About = () => {
               
               <div className="text-center">
                 <img 
-                  src="doctor2.jpg" 
+                  src="/bageshwari-hospital/doctor2.jpg" 
                   alt="Dr. Priya Sharma - Medical Director" 
                   className="w-32 h-32 rounded-full object-cover mx-auto mb-4 border-4 border-emerald-100"
                 />
@@ -150,7 +150,7 @@ const About = () => {
               
               <div className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
                 <img 
-                  src="/facility/facility4.jpg" 
+                  src="/bageshwari-hospital/facility/facility4.jpg" 
                   alt="Advanced Medical Equipment" 
                   className="w-full h-48 object-cover"
                 />

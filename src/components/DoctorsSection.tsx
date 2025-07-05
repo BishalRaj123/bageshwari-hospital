@@ -1,10 +1,11 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Clock, Mail, Calendar } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const DoctorsSection = () => {
+  const navigate = useNavigate(); // Initialize navigate hook
   const [selectedDepartment, setSelectedDepartment] = useState('All');
 
   const doctors = [
@@ -25,7 +26,7 @@ const DoctorsSection = () => {
       specialty: 'Gynecology & Obstetrics',
       qualification: 'MBBS, MS',
       experience: '12 years',
-      image: 'doctor2.jpg',
+      image: '/bageshwari-hospital/doctor2.jpg',
       availability: 'Mon-Fri: 10:00 AM - 5:00 PM',
       email: 'dr.priya@bageshwarihospital.com',
       department: 'Gynecology'
@@ -81,23 +82,6 @@ const DoctorsSection = () => {
   const filteredDoctors = selectedDepartment === 'All' 
     ? doctors 
     : doctors.filter(doctor => doctor.department === selectedDepartment);
-
-  const scrollToAppointment = (doctorEmail: string) => {
-    const element = document.getElementById('appointment');
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      // Pre-select the doctor in the appointment form
-      setTimeout(() => {
-        const doctorSelect = document.querySelector('select[name="doctor"]') as HTMLSelectElement;
-        if (doctorSelect) {
-          const option = Array.from(doctorSelect.options).find(opt => opt.value.includes(doctorEmail));
-          if (option) {
-            doctorSelect.value = option.value;
-          }
-        }
-      }, 500);
-    }
-  };
 
   return (
     <section id="doctors" className="section-padding bg-gray-50 py-8">
@@ -170,7 +154,7 @@ const DoctorsSection = () => {
                 </div>
 
                 <Button
-                  onClick={() => scrollToAppointment(doctor.email)}
+                  onClick={() => navigate(`/appointment`)}
                   className="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-2 rounded-full font-medium transition-all duration-200 transform hover:scale-105"
                 >
                   Book Appointment
@@ -196,10 +180,7 @@ const DoctorsSection = () => {
               for your specific needs and schedule your appointment.
             </p>
             <Button
-              onClick={() => {
-                const element = document.getElementById('contact');
-                if (element) element.scrollIntoView({ behavior: 'smooth' });
-              }}
+              onClick={() => navigate('/contact')}
               className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 rounded-full font-semibold"
             >
               Contact Patient Care

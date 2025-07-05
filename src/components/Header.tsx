@@ -81,7 +81,7 @@ const Header = () => {
             <Link to="/" className="flex items-center space-x-3 group">
               <div className="w-12 h-12 bg-white rounded-xl flex items-center justify-center group-hover:scale-105 transition-transform duration-200 overflow-hidden">
                 <img
-                  src="/logo.png"
+                  src="/bageshwari-hospital/logo.png"
                   alt="Bageshwari Hospital Logo"
                   className="w-16 h-16 object-contain"
                 />

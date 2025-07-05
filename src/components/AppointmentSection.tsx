@@ -82,6 +82,7 @@ const AppointmentSection = () => {
       toast({
         title: "Appointment Booked Successfully!",
         description: `Your appointment with ${formData.doctor} has been scheduled for ${formData.date} at ${formData.time}. You will receive a confirmation email shortly.`,
+        className: "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4",
       });
 
       // Reset form

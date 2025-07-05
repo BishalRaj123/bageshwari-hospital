@@ -65,7 +65,7 @@ const Appointment = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">Visit Hospital</h3>
                 <img
-                  src="/hero/hero3.jpg"
+                  src="/bageshwari-hospital/hero/hero3.jpg"
                   alt="Hospital Visit"
                   className="w-full h-56 object-cover rounded-xl mb-4"
                 />

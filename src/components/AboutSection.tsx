@@ -46,7 +46,7 @@ const AboutSection = () => {
         <div className="grid md:grid-cols-3 gap-8 mb-16 animate-on-scroll">
           <div className="relative group">
             <img
-              src="/hero/hero3.jpg"
+              src="/bageshwari-hospital/hero/hero3.jpg"
               alt="Hospital Exterior"
               className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300"
             />
@@ -57,7 +57,7 @@ const AboutSection = () => {
           
           <div className="relative group">
             <img
-              src="/hero/hero1.jpg"
+              src="/bageshwari-hospital/hero/hero1.jpg"
               alt="Patient Room"
               className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300"
             />
@@ -68,7 +68,7 @@ const AboutSection = () => {
           
           <div className="relative group">
             <img
-              src="/facility/facility1.jpg"
+              src="/bageshwari-hospital/facility/facility1.jpg"
               alt="Medical Equipment"
               className="w-full h-48 object-cover rounded-2xl shadow-lg group-hover:shadow-xl transition-shadow duration-300"
             />
