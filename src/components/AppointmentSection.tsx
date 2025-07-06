@@ -1,5 +1,5 @@
-
 import React, { useState } from 'react';
+import emailjs from 'emailjs-com';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -9,9 +9,44 @@ import { Textarea } from '@/components/ui/textarea';
 import { Calendar, Clock, User, Phone, Mail, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
-const AppointmentSection = () => {
+// Initialize EmailJS with your Public Key (replace with your actual Public Key)
+emailjs.init('WGUezQhDUUapF75qW');
+
+// Define EmailJS service and template IDs (replace with your actual IDs)
+const SERVICE_ID = 'service_1g5ohki';
+const TEMPLATE_ID_ADMIN = 'template_ci4bf1l';
+
+interface FormData {
+  name: string;
+  phone: string;
+  email: string;
+  department: string;
+  doctor: string;
+  date: string;
+  time: string;
+  notes: string;
+}
+
+interface Doctor {
+  name: string;
+  email: string;
+}
+
+// Add index signature to interface
+interface AdminTemplateParams extends Record<string, unknown> {
+  name: string;
+  phone: string;
+  email: string;
+  department: string;
+  doctor: string;
+  date: string;
+  time: string;
+  notes: string;
+}
+
+const AppointmentSection: React.FC = () => {
   const { toast } = useToast();
-  const [formData, setFormData] = useState({
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     phone: '',
     email: '',
@@ -21,9 +56,9 @@ const AppointmentSection = () => {
     time: '',
     notes: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
 
-  const departments = [
+  const departments: string[] = [
     'General Medicine',
     'Gynecology & Obstetrics',
     'Pediatrics',
@@ -32,7 +67,7 @@ const AppointmentSection = () => {
     'Diagnostics & Pathology'
   ];
 
-  const doctorsByDepartment = {
+  const doctorsByDepartment: Record<string, Doctor[]> = {
     'General Medicine': [
       { name: 'Dr. Rajesh Kumar', email: 'dr.rajesh@bageshwarihospital.com' }
     ],
@@ -53,13 +88,13 @@ const AppointmentSection = () => {
     ]
   };
 
-  const timeSlots = [
-     '10:00 AM',  '11:00 AM', '12:00 PM', '02:00 PM', '03:00 PM',
+  const timeSlots: string[] = [
+    '10:00 AM', '11:00 AM', '12:00 PM', '02:00 PM', '03:00 PM',
   ];
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    
+
     // Validation
     if (!formData.name || !formData.phone || !formData.email || !formData.department || !formData.doctor || !formData.date || !formData.time) {
       toast({
@@ -70,22 +105,45 @@ const AppointmentSection = () => {
       return;
     }
 
+    // Email validation
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast({
+        title: "Invalid Email",
+        description: "Please enter a valid email address.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
 
     try {
-      // Simulate API call
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      // In a real application, you would send this data to your backend
-      console.log('Apointment Data:', formData);
-      
+      const doctorName = formData.doctor.split(' - ')[0];
+      console.log('User Email:', formData.email); // Debug log
+      console.log('Admin Email (Template): rajurbc009@gmail.com'); // Confirm admin email
+
+      const templateParamsForAdmin: AdminTemplateParams = {
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        department: formData.department,
+        doctor: formData.doctor,
+        date: formData.date,
+        time: formData.time,
+        notes: formData.notes,
+      };
+
+      // Send admin notification to rajurbc009@gmail.com
+      await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParamsForAdmin);
+      console.log('Admin email sent successfully');
+
       toast({
         title: "Appointment Booked Successfully!",
-        description: `Your appointment with ${formData.doctor} has been scheduled for ${formData.date} at ${formData.time}. You will receive a confirmation email shortly.`,
+        description: `Your appointment with ${doctorName} has been scheduled for ${formData.date} at ${formData.time}. An admin will be notified.`,
         className: "bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 border border-gray-200 dark:border-gray-700 shadow-lg rounded-lg p-4",
       });
 
-      // Reset form
       setFormData({
         name: '',
         phone: '',
@@ -96,11 +154,14 @@ const AppointmentSection = () => {
         time: '',
         notes: ''
       });
-
     } catch (error) {
+      console.error('Error sending email:', error);
+      if (error instanceof Error) {
+        console.error('Error details:', error.message);
+      }
       toast({
         title: "Booking Failed",
-        description: "There was an error booking your appointment. Please try again or contact us directly.",
+        description: "There was an error notifying the admin. Please try again or contact us directly.",
         variant: "destructive",
       });
     } finally {
@@ -108,16 +169,15 @@ const AppointmentSection = () => {
     }
   };
 
-  const handleInputChange = (field: string, value: string) => {
+  const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
     
-    // Reset doctor selection when department changes
     if (field === 'department') {
       setFormData(prev => ({ ...prev, doctor: '' }));
     }
   };
 
-  const availableDoctors = formData.department ? doctorsByDepartment[formData.department as keyof typeof doctorsByDepartment] || [] : [];
+  const availableDoctors: Doctor[] = formData.department ? doctorsByDepartment[formData.department] || [] : [];
 
   return (
     <section id="appointment" className="section-padding bg-white py-8">
@@ -300,7 +360,7 @@ const AppointmentSection = () => {
                     </div>
                     <div>
                       <h4 className="font-semibold text-gray-900">Confirmation</h4>
-                      <p className="text-gray-600">You'll receive a confirmation email with appointment details within 2 hours.</p>
+                      <p className="text-gray-600">An admin will be notified of your appointment request within 2 hours.</p>
                     </div>
                   </div>
                   <div className="flex items-start space-x-3">
