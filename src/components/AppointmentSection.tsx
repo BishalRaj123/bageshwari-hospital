@@ -10,11 +10,11 @@ import { Calendar, Clock, User, Phone, Mail, FileText } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 // Initialize EmailJS with your Public Key (replace with your actual Public Key)
-emailjs.init('WGUezQhDUUapF75qW');
+emailjs.init('Public key');
 
 // Define EmailJS service and template IDs (replace with your actual IDs)
-const SERVICE_ID = 'service_1g5ohki';
-const TEMPLATE_ID_ADMIN = 'template_ci4bf1l';
+const SERVICE_ID = 'Service id';
+const TEMPLATE_ID_ADMIN = 'template id';
 
 interface FormData {
   name: string;
@@ -120,8 +120,7 @@ const AppointmentSection: React.FC = () => {
 
     try {
       const doctorName = formData.doctor.split(' - ')[0];
-      console.log('User Email:', formData.email); // Debug log
-      console.log('Admin Email (Template): rajurbc009@gmail.com'); // Confirm admin email
+      
 
       const templateParamsForAdmin: AdminTemplateParams = {
         name: formData.name,
@@ -134,7 +133,6 @@ const AppointmentSection: React.FC = () => {
         notes: formData.notes,
       };
 
-      // Send admin notification to rajurbc009@gmail.com
       await emailjs.send(SERVICE_ID, TEMPLATE_ID_ADMIN, templateParamsForAdmin);
       console.log('Admin email sent successfully');
 
